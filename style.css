@@ -1,25 +1,47 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
     text-align: center;
-    background-color: #f2f2f2;
+    background-color: #f8f0ff;
+    color: #333;
     padding: 50px;
+  }
+  
+  h1 {
+    font-size: 2.5em;
+    color: #a73489;
   }
   
   input {
     padding: 10px;
-    width: 300px;
+    width: 60%;
     font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
   }
   
   button {
     padding: 10px 20px;
     font-size: 16px;
+    background-color: #a73489;
+    color: white;
+    border: none;
+    border-radius: 5px;
     margin-left: 10px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #8c2c72;
   }
   
   #result {
     margin-top: 30px;
-    font-size: 18px;
-    font-weight: bold;
+    transition: all 0.5s ease;
+  }
+  
+  #result img {
+    width: 200px;
+    border-radius: 10px;
+    margin-top: 10px;
   }
   
