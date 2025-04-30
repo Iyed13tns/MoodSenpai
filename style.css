@@ -1,47 +1,200 @@
-body {
-    font-family: 'Arial', sans-serif;
+/* Variables pour la charte graphique */
+:root {
+    --primary-color: #00bcd4;            /* Cyan vif */
+    --primary-dark: #0097a7;             /* Cyan foncé */
+    --accent-color: #ffc107;             /* Ambre */
+    --background-gradient-start: #1f1f1f; /* Gris très foncé */
+    --background-gradient-end: #424242;   /* Gris moyen */
+    --card-bg: #323232;                  /* Fond de carte sombre */
+    --font-color: #ffffff;               /* Titres en blanc */
+    --text-color: #cccccc;               /* Texte en gris clair */
+    --transition-speed: 0.3s;
+  }
+  
+  /* Réinitialisation globale */
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, var(--background-gradient-start), var(--background-gradient-end));
+    background-size: 200% 200%;
+    animation: gradientShift 15s ease infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    transition: background var(--transition-speed) ease;
+  }
+  
+  @keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  
+  /* Thème clair (si désiré) */
+  body.light {
+    background: #f5f5f7;
+  }
+  
+  .container {
+    background: var(--card-bg);
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+    max-width: 500px;
+    width: 95%;
     text-align: center;
-    background-color: #f8f0ff;
-    color: #333;
-    padding: 50px;
+    transition: background var(--transition-speed) ease;
   }
   
   h1 {
-    font-size: 2.5em;
-    color: #a73489;
+    font-size: 2.8rem;
+    color: var(--font-color);
+    margin-bottom: 10px;
+    font-weight: bold;
   }
   
-  input {
-    padding: 10px;
-    width: 60%;
-    font-size: 16px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
+  p {
+    font-size: 1.1rem;
+    color: var(--text-color);
+    margin: 10px 0;
   }
   
+  /* Champ de saisie */
+  input[type="text"] {
+    width: 100%;
+    padding: 14px;
+    margin: 20px 0;
+    border: 2px solid #555;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    background: #484848;
+    color: var(--font-color);
+    outline: none;
+    transition: border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+  }
+  
+  input[type="text"]:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 8px rgba(0, 188, 212, 0.5);
+  }
+  
+  /* Groupe de boutons */
+  .button-group {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+  }
+  
+  /* Boutons */
   button {
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #a73489;
-    color: white;
+    padding: 14px 28px;
+    background: var(--primary-color);
     border: none;
-    border-radius: 5px;
-    margin-left: 10px;
+    border-radius: 10px;
+    color: var(--font-color);
+    font-weight: bold;
+    font-size: 1rem;
     cursor: pointer;
+    transition: background var(--transition-speed) ease, transform 0.2s ease;
   }
   
   button:hover {
-    background-color: #8c2c72;
+    background: var(--primary-dark);
+    transform: translateY(-2px);
   }
   
+  /* Résultats en grille */
   #result {
-    margin-top: 30px;
-    transition: all 0.5s ease;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
   }
   
-  #result img {
-    width: 200px;
+  /* Carte d'anime */
+  .anime-card {
+    background: #282828;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    animation: fadeIn 0.4s ease-in-out;
+    transition: transform 0.2s ease;
+    text-align: left;
+  }
+  
+  .anime-card:hover {
+    transform: scale(1.02);
+  }
+  
+  .anime-card h2 {
+    margin-bottom: 10px;
+    color: var(--primary-color);
+    font-size: 1.4rem;
+  }
+  
+  .anime-card p {
+    font-size: 0.9rem;
+    color: var(--text-color);
+    line-height: 1.4;
+  }
+  
+  .anime-card img {
+    max-width: 100%;
     border-radius: 10px;
-    margin-top: 10px;
+    margin: 15px auto 0;
+    display: block;
+  }
+  
+  .anime-card a {
+    display: inline-block;
+    margin-top: 12px;
+    color: var(--accent-color);
+    font-weight: 600;
+    text-decoration: none;
+    transition: color var(--transition-speed) ease;
+  }
+  
+  .anime-card a:hover {
+    color: var(--primary-color);
+  }
+  
+  /* Animation FadeIn */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  /* Spinner */
+  .spinner {
+    border: 4px solid rgba(255, 255, 255, 0.2);
+    border-top: 4px solid var(--primary-color);
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    animation: spin 0.8s linear infinite;
+    margin: 20px auto;
+  }
+  
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+  
+  /* Label pour l'accessibilité (visuellement masqué) */
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
   }
   

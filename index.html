@@ -2,19 +2,27 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MoodSenpai</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MoodSenpai - Découvre un Anime</title>
   <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
-<body>
-  <h1>MoodSenpai 🎌</h1>
-  <p>Dis-moi ton humeur et je te recommande un animé !</p>
+<body class="dark">
+  <div class="container">
+    <h1>MoodSenpai</h1>
+    <p>Dis-moi ce que tu ressens, et je te proposerai un anime adapté !</p>
+    <!-- Label pour l'accessibilité (visuellement masqué) -->
+    <label for="moodInput" class="visually-hidden">Entrez une phrase décrivant votre humeur ou votre envie</label>
+    <input type="text" id="moodInput" placeholder="Ex : Je me sens rempli d'énergie pour combattre...">
+    <div class="button-group">
+      <button id="searchBtn">Découvre ton animé</button>
+      <button id="themeToggle" title="Changer de thème">Changer de thème</button>
+    </div>
+    <div id="result"></div>
+  </div>
 
-  <input type="text" id="moodInput" placeholder="Ex: triste, motivé, amour...">
-  <button onclick="generateAnime()">Trouver un animé</button>
-
-  <div id="result"></div>
-
+  <!-- Inclusion d'Anime.js via CDN (objet global) -->
+  <script src="https://cdn.jsdelivr.net/npm/animejs/lib/anime.iife.min.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
